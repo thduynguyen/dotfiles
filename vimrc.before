@@ -1,0 +1,6 @@
+let mapleader=","
+let g:disable_markdown_autostyle = 1
+" for LustyExplorer
+set hidden
+
+call janus#disable_plugin('syntastic')

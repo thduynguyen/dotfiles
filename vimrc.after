@@ -1,0 +1,133 @@
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+
+" set cursorline
+"set background=dark
+"let g:solarized_termcolors = 256
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solarized_termtrans=1
+colorscheme monokai
+"set cursorline
+highlight CursorLine ctermbg=17
+
+set rnu
+" Try to speed up cursor movement
+set lazyredraw
+set ttyfast
+
+"cpp-enhanced-highlight option
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+" clang-format
+map <C-Y> :pyf ~/install/scripts/clang-format.py<cr>
+imap <C-Y> <c-o>:pyf ~/install/scripts/clang-format.py<cr>
+
+" speed up ESC key
+set timeoutlen=1000 ttimeoutlen=0
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'raw'
+function! SwitchBufferEnter()
+  if &buftype ==# 'quickfix'
+    execute "normal! \<CR>"
+  else
+    :CtrlPBuffer
+  endif
+endfunction
+nnoremap <CR> :call SwitchBufferEnter()<CR>
+"nnoremap <CR> :CtrlPBuffer<CR>
+
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 0
+" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+" auto reload file
+" check one time after 4s of inactivity in normal mode
+set autoread
+au CursorHold * checktime
+
+" use ag instead of Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep -U'
+  let g:ctrlp_user_command = 'ag %s -U -i -l --nocolor --nogroup -g ""'
+  "let g:ctrlp_use_caching = 0
+  " this matcher speeds up ctrlp matching significantly for large projects
+  let g:ctrlp_max_files = 0
+  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+endif
+
+" Alt-F to grep
+nnoremap ƒ :Ack<SPACE>
+" Shift-K to grep word under cursor
+nnoremap K :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Copy and paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+set pastetoggle=<F2> "http://nvie.com/posts/how-i-boosted-my-vim/"
+set nobackup
+set noswapfile
+
+" Alt-j/k to move lines up/down
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
+
+" Code folding
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=10
+let c_no_comment_fold = 1
+
+" Close buffer without closing window
+" http://stackoverflow.com/a/8585343
+map <leader>q :silent! bp<bar>sp<bar>bn<bar>bd<CR>
+
+" ctags
+" look in the current directory for tags and work up the tree towards root
+" until one is found (can be anywhere in the source tree)
+set tags=./tags;/
+" C\ open the definition in a new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" A] open the definition in a vertical split
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" scons files
+au BufNewFile,BufRead SCons* set filetype=scons
+
+" Delete buffer in CtrlP
+let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
+
+func! MyCtrlPMappings()
+    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
+endfunc
+
+func! s:DeleteBuffer()
+    let line = getline('.')
+    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
+        \ : fnamemodify(line[2:], ':p')
+    exec "bd" bufid
+    exec "norm \<F5>"
+endfunc
+
+" Wrap lines vimcasts.org/episodes/soft-wrapping-text
+command! -nargs=* Wrap set wrap linebreak nolist
