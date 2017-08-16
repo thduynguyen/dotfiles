@@ -9,7 +9,7 @@
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "let g:solarized_termtrans=1
-colorscheme monokai
+colorscheme molokai
 "set cursorline
 highlight CursorLine ctermbg=17
 
