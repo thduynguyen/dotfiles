@@ -1,0 +1,45 @@
+[submodule "janus/BufOnly.vim"]
+	path = janus/BufOnly.vim
+	url = https://github.com/vim-scripts/BufOnly.vim.git
+[submodule "janus/vim-obsession"]
+	path = janus/vim-obsession
+	url = https://github.com/tpope/vim-obsession.git
+[submodule "janus/vim-prosession"]
+	path = janus/vim-prosession
+	url = https://github.com/dhruvasagar/vim-prosession
+[submodule "janus/vim-tmux-navigator"]
+	path = janus/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "janus/FastFold"]
+	path = janus/FastFold
+	url = https://github.com/Konfekt/FastFold.git
+[submodule "janus/ctrlp-cmatcher"]
+	path = janus/ctrlp-cmatcher
+	url = https://github.com/JazzCore/ctrlp-cmatcher.git
+[submodule "janus/lusty"]
+	path = janus/lusty
+	url = https://github.com/sjbach/lusty.git
+[submodule "janus/vim-autotag"]
+	path = janus/vim-autotag
+	url = https://github.com/craigemery/vim-autotag.git
+[submodule "janus/vim-bracketed-paste"]
+	path = janus/vim-bracketed-paste
+	url = https://github.com/ConradIrwin/vim-bracketed-paste.git
+[submodule "janus/vim-cpp-enhanced-highlight"]
+	path = janus/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "janus/vim-markdown"]
+	path = janus/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule "janus/vim-iterm2-navigator"]
+	path = janus/vim-iterm2-navigator
+	url = https://github.com/zephod/vim-iterm2-navigator.git
+[submodule "janus/vim-ipython"]
+	path = janus/vim-ipython
+	url = https://github.com/ivanov/vim-ipython
+[submodule "janus/calendar-vim"]
+	path = janus/calendar-vim
+	url = https://github.com/mattn/calendar-vim.git
+[submodule "janus/vimwiki"]
+	path = janus/vimwiki
+	url = https://github.com/vimwiki/vimwiki
