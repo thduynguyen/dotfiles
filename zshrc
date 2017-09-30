@@ -6,7 +6,7 @@ export PATH=$PATH:$HOME/tools/gcc-arm-none-eabi-4_9-2015q3/bin
 export PATH=$PATH:$HOME/tools/gcc-arm-linux-eabihf/gcc-linaro-5.2-2015.11-2-osx_arm-linux-gnueabihf/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dta-huynh/.oh-my-zsh
+export ZSH=/Users/thduynguyen/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -15,9 +15,9 @@ export ZSH=/Users/dta-huynh/.oh-my-zsh
 #ZSH_THEME="powerlevel9k/powerlevel9k"
 #ZSH_THEME="theunraveler"
 #ZSH_THEME="igorsilva"
-ZSH_THEME="wedisagree"
+ZSH_THEME="wedisagree-modified"
 
-DEFAULT_USER="dta-huynh"
+DEFAULT_USER="thduynguyen"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
