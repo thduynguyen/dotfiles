@@ -40,3 +40,6 @@
 [submodule "janus/calendar-vim"]
 	path = janus/calendar-vim
 	url = https://github.com/mattn/calendar-vim.git
+[submodule "janus/vim-rtags"]
+	path = janus/vim-rtags
+	url = https://github.com/lyuts/vim-rtags.git
