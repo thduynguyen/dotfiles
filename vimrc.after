@@ -1,7 +1,7 @@
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-L> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " set cursorline
 "set background=dark
@@ -80,6 +80,9 @@ vmap <Leader>P "+P
 set pastetoggle=<F2> "http://nvie.com/posts/how-i-boosted-my-vim/"
 set nobackup
 set noswapfile
+set clipboard=unnamed
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
 
 " Alt-j/k to move lines up/down
 nnoremap ∆ :m .+1<CR>==
@@ -110,7 +113,7 @@ set tags=./tags;/
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " A] open the definition in a vertical split
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
+nnoremap <leader>. :CtrlPTag<cr>
 " scons files
 au BufNewFile,BufRead SCons* set filetype=scons
 
@@ -131,3 +134,7 @@ endfunc
 
 " Wrap lines vimcasts.org/episodes/soft-wrapping-text
 command! -nargs=* Wrap set wrap linebreak nolist
+
+" Tab navigation
+map <D-]> gt
+map <D-[> gT
