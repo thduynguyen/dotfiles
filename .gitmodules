@@ -55,3 +55,6 @@
 [submodule "janus/vim-yapf-format"]
 	path = janus/vim-yapf-format
 	url = https://github.com/pignacio/vim-yapf-format.git
+[submodule "janus/yapf"]
+	path = janus/yapf
+	url = https://github.com/google/yapf
