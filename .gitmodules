@@ -43,3 +43,15 @@
 [submodule "janus/vim-rtags"]
 	path = janus/vim-rtags
 	url = https://github.com/lyuts/vim-rtags.git
+[submodule "janus/vim-glsl"]
+	path = janus/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl.git
+[submodule "janus/hlsl.vim"]
+	path = janus/hlsl.vim
+	url = https://github.com/beyondmarc/hlsl.vim.git
+[submodule "janus/ShaderHighLight"]
+	path = janus/ShaderHighLight
+	url = https://github.com/vim-scripts/ShaderHighLight.git
+[submodule "janus/vim-yapf-format"]
+	path = janus/vim-yapf-format
+	url = https://github.com/pignacio/vim-yapf-format.git

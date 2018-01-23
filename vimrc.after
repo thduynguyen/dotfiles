@@ -3,6 +3,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+
 " set cursorline
 "set background=dark
 "let g:solarized_termcolors = 256
@@ -24,8 +25,10 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 " clang-format
-map <C-Y> :pyf ~/install/scripts/clang-format.py<cr>
-imap <C-Y> <c-o>:pyf ~/install/scripts/clang-format.py<cr>
+autocmd FileType c map <C-Y> :pyf ~/install/scripts/clang-format.py<cr>
+autocmd FileType c imap <C-Y> <c-o>:pyf ~/install/scripts/clang-format.py<cr>
+autocmd FileType python map <C-Y> :call yapf#YAPF()<cr>
+autocmd FileType python imap <C-Y> <c-o>:call yapf#YAPF()<cr>
 
 " speed up ESC key
 set timeoutlen=1000 ttimeoutlen=0
@@ -62,7 +65,7 @@ if executable('ag')
   "let g:ctrlp_use_caching = 0
   " this matcher speeds up ctrlp matching significantly for large projects
   let g:ctrlp_max_files = 0
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 endif
 
 " Alt-F to grep
@@ -138,3 +141,9 @@ command! -nargs=* Wrap set wrap linebreak nolist
 " Tab navigation
 map <D-]> gt
 map <D-[> gT
+hi MatchParen cterm=underline ctermbg=none ctermfg=none
+
+let s:maxoff = 50 " maximum number of lines to look backwards.
+
+let pyindent_nested_paren="&sw*2"
+let pyindent_open_paren="&sw*2"

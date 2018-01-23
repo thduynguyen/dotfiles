@@ -1,12 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/git/git-got/src:$HOME/git/er-repo
-# Add gcc-arm toolchain
-export PATH=$PATH:$HOME/tools/gcc-arm-none-eabi-4_9-2015q3/bin
-export PATH=$PATH:$HOME/tools/gcc-arm-linux-eabihf/gcc-linaro-5.2-2015.11-2-osx_arm-linux-gnueabihf/bin
+export PATH=$HOME/install/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/duy-nguyenta/.oh-my-zsh
+export ZSH=/home/duynguyen/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -16,7 +12,7 @@ export ZSH=/Users/duy-nguyenta/.oh-my-zsh
 #ZSH_THEME="igorsilva"
 ZSH_THEME="wedisagree-modified"
 
-DEFAULT_USER="duy-nguyenta"
+DEFAULT_USER="duynguyen"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,6 +74,11 @@ else
  export EDITOR='vim'
 fi
 
+# make nvim default
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -102,3 +103,8 @@ bindkey "^J" history-beginning-search-forward
 bindkey '^[[Z' reverse-menu-complete
 bindkey '^L' autosuggest-accept
 bindkey '^H' autosuggest-clear
+
+# for ROS
+source /opt/ros/kinetic/setup.zsh
+
+export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
