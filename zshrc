@@ -108,3 +108,6 @@ bindkey '^H' autosuggest-clear
 source /opt/ros/kinetic/setup.zsh
 
 export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
+
+export TERM=xterm-256
+export VTE_VERSION="100"
