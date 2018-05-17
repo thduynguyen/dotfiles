@@ -75,9 +75,9 @@ else
 fi
 
 # make nvim default
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
+#if type nvim > /dev/null 2>&1; then
+  #alias vim='nvim'
+#fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -104,7 +104,14 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey '^L' autosuggest-accept
 bindkey '^H' autosuggest-clear
 
+# http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
+autoload -U zmv
+alias mmv='noglob zmv -W'
+
 # for ROS
 source /opt/ros/kinetic/setup.zsh
 
-export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
+#export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
+export ANZU_HOME=${HOME}/git/enabling-anzu
+alias cda='cd $ANZU_HOME'
+alias cdros='cd $ANZU_HOME/perception/ros'

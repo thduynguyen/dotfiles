@@ -25,8 +25,8 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
 " clang-format
-autocmd FileType c map <C-Y> :pyf ~/install/scripts/clang-format.py<cr>
-autocmd FileType c imap <C-Y> <c-o>:pyf ~/install/scripts/clang-format.py<cr>
+autocmd FileType c,cpp,cc map <C-Y> :pyf ~/install/scripts/clang-format.py<cr>
+autocmd FileType c,cpp,cc imap <C-Y> <c-o>:pyf ~/install/scripts/clang-format.py<cr>
 autocmd FileType python map <C-Y> :call yapf#YAPF()<cr>
 autocmd FileType python imap <C-Y> <c-o>:call yapf#YAPF()<cr>
 
@@ -45,13 +45,19 @@ endfunction
 nnoremap <CR> :call SwitchBufferEnter()<CR>
 "nnoremap <CR> :CtrlPBuffer<CR>
 
+"----------
+" ctrlp.vim
+"----------
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_working_path_mode = 'rw'
 " Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
+" Note: this won't work because we use ag for ctrlp_user_command. Ignore patterns should be
+" handled by ag as below.
+"set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/build/*,*/.DS_Store,*/vendor
+" Launch CtrlP. Use this and then start typing fragments of the file path.
+nnoremap <leader>ff :CtrlP<cr>
 
 " auto reload file
 " check one time after 4s of inactivity in normal mode
@@ -60,8 +66,8 @@ au CursorHold * checktime
 
 " use ag instead of Ack
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep -U'
-  let g:ctrlp_user_command = 'ag %s -U -i -l --nocolor --nogroup -g ""'
+  let g:ackprg = 'ag --vimgrep'
+  let g:ctrlp_user_command = 'ag %s -i -l -f --nocolor --nogroup -g ""'
   "let g:ctrlp_use_caching = 0
   " this matcher speeds up ctrlp matching significantly for large projects
   let g:ctrlp_max_files = 0
