@@ -8,9 +8,9 @@ export ZSH=/home/duynguyen/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="powerlevel9k/powerlevel9k"
-#ZSH_THEME="theunraveler"
+ZSH_THEME="theunraveler"
 #ZSH_THEME="igorsilva"
-ZSH_THEME="wedisagree-modified"
+#ZSH_THEME="wedisagree"
 
 DEFAULT_USER="duynguyen"
 
