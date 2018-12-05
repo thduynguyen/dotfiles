@@ -1,7 +1,12 @@
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+tnoremap <ESC> <C-\><C-n>
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+tnoremap <A-h> <C-\><C-n><C-w>h
 
 
 " set cursorline
@@ -13,6 +18,8 @@ nnoremap <C-H> <C-W><C-H>
 colorscheme molokai
 "set cursorline
 highlight CursorLine ctermbg=17
+set cc=80
+highlight ColorColumn ctermbg=0 guibg=darkgrey
 
 set rnu
 " Try to speed up cursor movement
@@ -153,3 +160,11 @@ let s:maxoff = 50 " maximum number of lines to look backwards.
 
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
+
+"GitGutter Sign column always on
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
+

@@ -115,3 +115,8 @@ source /opt/ros/kinetic/setup.zsh
 export ANZU_HOME=${HOME}/git/enabling-anzu
 alias cda='cd $ANZU_HOME'
 alias cdros='cd $ANZU_HOME/perception/ros'
+alias cdd='cd ${HOME}/git/drake'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+alias open='gnome-open'
+alias tmux='tmux -2'
