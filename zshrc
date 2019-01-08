@@ -56,7 +56,7 @@ DEFAULT_USER="duynguyen"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,5 +118,6 @@ alias cdros='cd $ANZU_HOME/perception/ros'
 alias cdd='cd ${HOME}/git/drake'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-alias open='gnome-open'
+alias open='gio open'
 alias tmux='tmux -2'
+alias nautilus='nautilus &'
