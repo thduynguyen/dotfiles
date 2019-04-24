@@ -109,7 +109,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 
 # for ROS
-source /opt/ros/kinetic/setup.zsh
+# source /opt/ros/kinetic/setup.zsh
 
 #export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
 export ANZU_HOME=${HOME}/git/enabling-anzu
