@@ -62,6 +62,16 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# History Configuration
+# https://gist.github.com/matthewmccullough/787142
+HISTSIZE=5000               #How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     #Where to save history to disk
+SAVEHIST=5000               #Number of history entries to save to disk
+#HISTDUP=erase               #Erase duplicates in the history file
+setopt    appendhistory     #Append history to the history file (no overwriting)
+setopt    sharehistory      #Share history across terminals
+setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -108,6 +118,11 @@ bindkey '^H' autosuggest-clear
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
+# pipx completions
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
+
 # for ROS
 source /opt/ros/melodic/setup.zsh
 
@@ -115,9 +130,14 @@ source /opt/ros/melodic/setup.zsh
 export ANZU_HOME=${HOME}/git/enabling-anzu
 alias cda='cd $ANZU_HOME'
 alias cdros='cd $ANZU_HOME/perception/ros'
-alias cdd='cd ${HOME}/git/drake'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 alias open='gio open'
 alias tmux='tmux -2'
 alias nautilus='nautilus &'
+alias pyenv='source ~/venv/bin/activate'
+alias ipython='python3 -m IPython'
+alias cdl='cd ./*(/om[1])'
+
+# Created by `userpath` on 2020-04-17 14:56:36
+export PATH="$PATH:/home/duynguyen/.local/bin"
