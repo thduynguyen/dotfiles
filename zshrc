@@ -114,30 +114,52 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey '^L' autosuggest-accept
 bindkey '^H' autosuggest-clear
 
+#############################
+## FZF + Bazel Integration ##
+#############################
+# https://tri-internal.slack.com/archives/C1BEJ1N9X/p1583487252041700
+function _maybe_custom_file_widget {
+  if [[ $BUFFER == "bazel test " ]]
+  then
+    # We need to catch the potential request for sudo.
+    bazel version > /dev/null 2>&1
+    LBUFFER="${LBUFFER}`bazel query 'kind(\"cc_test\", //...)' 2> /dev/null | fzf`"
+    local ret=$?
+    zle reset-prompt
+    return $ret
+  elif [[ $BUFFER == "bazel build " ]]
+  then
+    # We need to catch the potential request for sudo.
+    bazel version > /dev/null 2>&1
+    LBUFFER="${LBUFFER}`bazel query '//...' 2> /dev/null | fzf`"
+    local ret=$?
+    zle reset-prompt
+    return $ret
+  elif [[ $BUFFER == "bazel run " ]]
+  then
+    # We need to catch the potential request for sudo.
+    bazel version > /dev/null 2>&1
+    LBUFFER="${LBUFFER}`bazel query 'kind(\"cc_test|cc_binary\", //...)' 2> /dev/null | fzf`"
+    local ret=$?
+    zle reset-prompt
+    return $ret
+  else
+    fzf-file-widget
+  fi
+}
+zle -N _maybe_custom_file_widget
+bindkey '^T' _maybe_custom_file_widget
+
 # http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-# pipx completions
-autoload -U bashcompinit
-bashcompinit
-eval "$(register-python-argcomplete pipx)"
-
-# for ROS
-source /opt/ros/melodic/setup.zsh
-
-#export PYTHONPATH=${PYTHONPATH}:${HOME}/install/cython
 export ANZU_HOME=${HOME}/git/enabling-anzu
 alias cda='cd $ANZU_HOME'
-alias cdros='cd $ANZU_HOME/perception/ros'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 alias open='gio open'
 alias tmux='tmux -2'
 alias nautilus='nautilus &'
-alias pyenv='source ~/venv/bin/activate'
-alias ipython='python3 -m IPython'
-alias cdl='cd ./*(/om[1])'
-
-# Created by `userpath` on 2020-04-17 14:56:36
-export PATH="$PATH:/home/duynguyen/.local/bin"
+alias vpn='globalprotect connect -p portal.gp.ext.tri.global'
+alias dis='globalprotect disconnect'
