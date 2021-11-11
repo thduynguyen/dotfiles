@@ -154,7 +154,7 @@ bindkey '^T' _maybe_custom_file_widget
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-export ANZU_HOME=${HOME}/git/enabling-anzu
+export ANZU_HOME=${HOME}/git/anzu
 alias cda='cd $ANZU_HOME'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
