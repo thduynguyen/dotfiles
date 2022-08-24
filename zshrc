@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/install/bin:/usr/local/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -154,12 +155,15 @@ bindkey '^T' _maybe_custom_file_widget
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-export ANZU_HOME=${HOME}/git/anzu
-alias cda='cd $ANZU_HOME'
+export AUTOYARD_HOME=${HOME}/workspace/autoyard
+alias cda='cd $AUTOYARD_HOME'
+export PERCEPTION_HOME=${HOME}/workspace/perception
+alias cdp='cd $PERCEPTION_HOME'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 alias open='gio open'
 alias tmux='tmux -2'
 alias nautilus='nautilus &'
-alias vpn='globalprotect connect -p portal.gp.ext.tri.global'
-alias dis='globalprotect disconnect'
+
+# Pleasebuild Shell completion
+source <(plz --completion_script)
